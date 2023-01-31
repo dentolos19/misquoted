@@ -1,14 +1,14 @@
-import { getRandomQuote } from "@/lib/api";
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getRandomQuote } from "@/lib/api";
+import type { Quote } from "@/lib/api";
 
 export default function Page() {
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
+  const [quote, setQuote] = useState<Quote>();
 
   const generateQuote = async () => {
     const quote = await getRandomQuote();
-    setQuote(quote.content);
-    setAuthor(quote.author);
+    setQuote(quote);
   };
 
   useEffect(() => {
@@ -31,10 +31,12 @@ export default function Page() {
       >
         <h1>
           {'"'}
-          {quote}
+          {quote?.content}
           {'"'}
         </h1>
-        <p>{author}</p>
+        <p>
+          <Link href={"/author/" + quote?.authorSlug}>{quote?.author}</Link>
+        </p>
         <button onClick={generateQuote}>Generate</button>
       </div>
     </main>

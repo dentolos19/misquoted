@@ -1,3 +1,13 @@
+export type Author = {
+  _id: string;
+  bio: string;
+  description: string;
+  link: string;
+  name: string;
+  slug: string;
+  quoteCount: number;
+};
+
 export type Quote = {
   _id: string;
   content: string;
@@ -9,8 +19,20 @@ export type Quote = {
   dateModified: string;
 };
 
-export async function getRandomQuote() {
-  return await fetch("https://api.quotable.io/random")
+export function getAuthor(authorSlug: string) {
+  return fetch(`https://api.quotable.io/authors?slug=${authorSlug}`)
+    .then((res) => res.json())
+    .then((data) => data.results[0] as Author);
+}
+
+export function getRandomQuote() {
+  return fetch("https://api.quotable.io/random")
     .then((res) => res.json())
     .then((data) => data as Quote);
+}
+
+export function getQuotesByAuthor(authorSlug: string) {
+  return fetch(`https://api.quotable.io/quotes?author=${authorSlug}`)
+    .then((res) => res.json())
+    .then((data) => data.results as Quote[]);
 }
