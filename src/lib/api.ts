@@ -21,24 +21,44 @@ export type Quote = {
 
 export function getAuthor(authorSlug: string) {
   return fetch(`https://api.quotable.io/authors?slug=${authorSlug}`)
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        return undefined;
+      }
+      return res.json();
+    })
     .then((data) => data.results[0] as Author);
 }
 
 export function getQuote(quoteId: string) {
   return fetch(`https://api.quotable.io/quotes/${quoteId}`)
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        return undefined;
+      }
+      return res.json();
+    })
     .then((data) => data as Quote);
 }
 
 export function getRandomQuote() {
   return fetch("https://api.quotable.io/random")
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        return undefined;
+      }
+      return res.json();
+    })
     .then((data) => data as Quote);
 }
 
 export function getQuotesByAuthor(authorSlug: string) {
   return fetch(`https://api.quotable.io/quotes?author=${authorSlug}`)
-    .then((res) => res.json())
+    .then((res) => {
+      if (!res.ok) {
+        return undefined;
+      }
+      return res.json();
+    })
     .then((data) => data.results as Quote[]);
 }

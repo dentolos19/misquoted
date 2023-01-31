@@ -29,11 +29,7 @@ export default function Page() {
           textAlign: "center",
         }}
       >
-        <h1>
-          {'"'}
-          {quote?.content}
-          {'"'}
-        </h1>
+        <h1>{quote?.content}</h1>
         <p>
           <Link href={"/author/" + quote?.authorSlug}>{quote?.author}</Link>
         </p>

@@ -8,8 +8,8 @@ export default function Page() {
   const router = useRouter();
   const { slug } = router.query as { slug: string };
 
-  const [author, setAuthor] = useState<Author>();
-  const [quotes, setQuotes] = useState<Quote[]>();
+  const [author, setAuthor] = useState<Author | null>(null);
+  const [quotes, setQuotes] = useState<Quote[] | null>(null);
 
   useEffect(() => {
     async function doStuff() {
@@ -20,6 +20,21 @@ export default function Page() {
     }
     doStuff();
   }, [slug]);
+
+  if (author === undefined || quotes === undefined) {
+    return (
+      <main
+        style={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>404</h1>
+      </main>
+    );
+  }
 
   return (
     <main>

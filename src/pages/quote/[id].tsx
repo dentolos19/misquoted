@@ -8,7 +8,7 @@ export default function Page() {
   const router = useRouter();
   const { id } = router.query as { id: string };
 
-  const [quote, setQuote] = useState<Quote>();
+  const [quote, setQuote] = useState<Quote | null>(null);
 
   useEffect(() => {
     async function doStuff() {
@@ -17,6 +17,21 @@ export default function Page() {
     }
     doStuff();
   }, [id]);
+
+  if (quote === undefined) {
+    return (
+      <main
+        style={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>404</h1>
+      </main>
+    );
+  }
 
   return (
     <main
@@ -32,11 +47,7 @@ export default function Page() {
           textAlign: "center",
         }}
       >
-        <h1>
-          {'"'}
-          {quote?.content}
-          {'"'}
-        </h1>
+        <h1>{quote?.content}</h1>
         <p>
           <Link href={"/author/" + quote?.authorSlug}>{quote?.author}</Link>
         </p>
