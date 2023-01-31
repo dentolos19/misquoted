@@ -33,6 +33,8 @@ export default function Page() {
     );
   }
 
+  const generateHandler = () => {};
+
   return (
     <main
       style={{
@@ -43,14 +45,18 @@ export default function Page() {
       }}
     >
       <div
+        className={"quote"}
         style={{
           textAlign: "center",
         }}
       >
-        <h1>{quote?.content}</h1>
-        <p>
-          <Link href={"/author/" + quote?.authorSlug}>{quote?.author}</Link>
-        </p>
+        <Link className={"content"} href={"/quote/" + quote?._id}>
+          {quote?.content}
+        </Link>
+        <br />
+        <Link className={"author"} href={"/author/" + quote?.authorSlug}>
+          {quote?.author}
+        </Link>
       </div>
     </main>
   );
