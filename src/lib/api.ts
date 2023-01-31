@@ -25,6 +25,12 @@ export function getAuthor(authorSlug: string) {
     .then((data) => data.results[0] as Author);
 }
 
+export function getQuote(quoteId: string) {
+  return fetch(`https://api.quotable.io/quotes/${quoteId}`)
+    .then((res) => res.json())
+    .then((data) => data as Quote);
+}
+
 export function getRandomQuote() {
   return fetch("https://api.quotable.io/random")
     .then((res) => res.json())
