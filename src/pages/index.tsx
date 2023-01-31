@@ -1,5 +1,5 @@
 import { getRandomQuote } from "@/lib/api";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Page() {
   const [quote, setQuote] = useState("");
@@ -10,6 +10,10 @@ export default function Page() {
     setQuote(quote.content);
     setAuthor(quote.author);
   };
+
+  useEffect(() => {
+    generateQuote();
+  }, []);
 
   return (
     <main
