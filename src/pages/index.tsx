@@ -14,6 +14,9 @@ export default function Page() {
   const generateHandler = async () => {
     const quote = await getRandomQuote();
     history.push(quote);
+    if (quote.length > 30) {
+      history = history.slice(1);
+    }
     localStorage.setItem("history", JSON.stringify(history));
     setQuote(quote);
   };
@@ -66,9 +69,6 @@ export default function Page() {
           </button>
           <button className={"button"} onClick={historyHandler}>
             History
-          </button>
-          <button className={"button"} onClick={shareHandler}>
-            Share
           </button>
         </div>
       </div>

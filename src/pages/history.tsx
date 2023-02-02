@@ -9,7 +9,7 @@ export default function Page() {
     const history = JSON.parse(
       localStorage.getItem("history") || "[]"
     ) as Quote[];
-    setHistory(history);
+    setHistory(history.reverse());
   }, []);
 
   return (
