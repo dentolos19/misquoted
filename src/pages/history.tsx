@@ -1,20 +1,22 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { getHistory } from "@/lib/data";
 import type { Quote } from "@/lib/api";
 
 export default function Page() {
-  const [history, setHistory] = useState<Quote[] | null>();
+  const [history, setHistory] = useState<Quote[] | null>(null);
 
   useEffect(() => {
-    const history = JSON.parse(
-      localStorage.getItem("history") || "[]"
-    ) as Quote[];
-    setHistory(history.reverse());
+    const quotes = getHistory().reverse();
+    setHistory(quotes);
   }, []);
 
   return (
     <main>
-      <h1>History</h1>
+      <div>
+        <h1>History</h1>
+        <p>History is limited to 30 quotes.</p>
+      </div>
       <ul>
         {history?.map((quote) => (
           <li key={quote._id}>

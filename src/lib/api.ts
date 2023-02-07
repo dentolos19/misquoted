@@ -19,22 +19,22 @@ export type Quote = {
   dateModified: string;
 };
 
-export function getAuthor(authorSlug: string) {
-  return fetch(`https://api.quotable.io/authors?slug=${authorSlug}`)
+export function getAuthor(slug: string) {
+  return fetch(`https://api.quotable.io/authors?slug=${slug}`)
     .then((res) => {
       if (!res.ok) {
-        return undefined;
+        throw new Error(res.statusText);
       }
       return res.json();
     })
     .then((data) => data.results[0] as Author);
 }
 
-export function getQuote(quoteId: string) {
-  return fetch(`https://api.quotable.io/quotes/${quoteId}`)
+export function getQuote(id: string) {
+  return fetch(`https://api.quotable.io/quotes/${id}`)
     .then((res) => {
       if (!res.ok) {
-        return undefined;
+        throw new Error(res.statusText);
       }
       return res.json();
     })
@@ -45,18 +45,18 @@ export function getRandomQuote() {
   return fetch("https://api.quotable.io/random")
     .then((res) => {
       if (!res.ok) {
-        return undefined;
+        throw new Error(res.statusText);
       }
       return res.json();
     })
     .then((data) => data as Quote);
 }
 
-export function getQuotesByAuthor(authorSlug: string) {
-  return fetch(`https://api.quotable.io/quotes?author=${authorSlug}`)
+export function getQuotesByAuthor(author: Author) {
+  return fetch(`https://api.quotable.io/quotes?author=${author.slug}`)
     .then((res) => {
       if (!res.ok) {
-        return undefined;
+        throw new Error(res.statusText);
       }
       return res.json();
     })

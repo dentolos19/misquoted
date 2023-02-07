@@ -1,36 +1,23 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router from "next/router";
 import { useEffect, useState } from "react";
 import { getRandomQuote } from "@/lib/api";
+import { addHistory } from "@/lib/data";
 import type { Quote } from "@/lib/api";
 
-let history: Quote[] = [];
-
 export default function Page() {
-  const router = useRouter();
-
-  const [quote, setQuote] = useState<Quote>();
+  const [quote, setQuote] = useState<Quote | null>(null);
 
   const generateHandler = async () => {
     const quote = await getRandomQuote();
-    history.push(quote);
-    if (quote.length > 30) {
-      history = history.slice(1);
-    }
-    localStorage.setItem("history", JSON.stringify(history));
+    addHistory(quote);
     setQuote(quote);
   };
-
-  const historyHandler = () => {
-    router.push("/history");
-  };
-
-  const shareHandler = () => {
-    router.push("/quote/" + quote?._id);
+  const historyHandler = async () => {
+    Router.push("/history");
   };
 
   useEffect(() => {
-    history = JSON.parse(localStorage.getItem("history") || "[]") as Quote[];
     generateHandler();
   }, []);
 
@@ -43,16 +30,11 @@ export default function Page() {
         alignItems: "center",
       }}
     >
-      <div
-        style={{
-          textAlign: "center",
-        }}
-      >
+      <div>
         <div className={"quote"}>
           <Link className={"content"} href={"/quote/" + quote?._id}>
             {quote?.content}
           </Link>
-          <br />
           <Link className={"author"} href={"/author/" + quote?.authorSlug}>
             {quote?.author}
           </Link>
@@ -60,16 +42,13 @@ export default function Page() {
         <div
           style={{
             display: "flex",
-            gap: "4px",
+            marginTop: "16px",
             justifyContent: "center",
+            gap: "4px",
           }}
         >
-          <button className={"button"} onClick={generateHandler}>
-            Generate
-          </button>
-          <button className={"button"} onClick={historyHandler}>
-            History
-          </button>
+          <button onClick={generateHandler}>Generate</button>
+          <button onClick={historyHandler}>History</button>
         </div>
       </div>
     </main>
