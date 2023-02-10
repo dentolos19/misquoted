@@ -19,8 +19,13 @@ export default function Page() {
       </div>
       <ul>
         {history?.map((quote) => (
-          <li key={quote._id}>
-            <Link href={"/quote/" + quote._id}>{quote.content}</Link>
+          <li key={quote._id} className={"quote-history"}>
+            <Link className={"content"} href={"/quote/" + quote._id}>
+              {quote.content}
+            </Link>
+            <Link className={"author"} href={"/author/" + quote.authorSlug}>
+              — {quote.author}
+            </Link>
           </li>
         ))}
       </ul>
