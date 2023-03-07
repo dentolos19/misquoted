@@ -35,7 +35,7 @@ export default function Page() {
             </div>
             <div className={"card-content"}>
               <div className={"content"}>
-                <div className={"pb-2"}>
+                <div className={"pb-4"}>
                   <div className={"tag is-info"}>
                     <span className={"icon-text"}>
                       <span className={"icon"}>
