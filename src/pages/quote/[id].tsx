@@ -1,35 +1,42 @@
-import Link from "next/link";
-import Router from "next/router";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { getQuote } from "@/lib/api";
 import type { Quote } from "@/lib/api";
 
 export default function Page() {
+  const router = useRouter();
+  const { id } = router.query as { id: string };
+
   const [quote, setQuote] = useState<Quote | null>(null);
 
   useEffect(() => {
     const doTask = async () => {
-      const { id } = Router.query as { id: string };
       const quote = await getQuote(id);
       setQuote(quote);
     };
     doTask();
-  }, []);
+  }, [id]);
 
   return (
-    <main
-      style={{
-        display: "flex",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div className={"quote"}>
-        <div className={"content"}>{quote?.content}</div>
-        <Link className={"author"} href={"/author/" + quote?.authorSlug}>
-          {quote?.author}
-        </Link>
+    <main className={"hero is-fullheight"}>
+      <div
+        className={
+          "hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
+        }
+      >
+        <div className={"card"}>
+          <div className={"card-content"}>
+            <p className={"title is-clickable"}>{"“" + quote?.content + "”"}</p>
+            <p
+              className={"subtitle is-clickable"}
+              onClick={() => {
+                router.push("/author/" + quote?.authorSlug);
+              }}
+            >
+              {"— " + quote?.author}
+            </p>
+          </div>
+        </div>
       </div>
     </main>
   );
