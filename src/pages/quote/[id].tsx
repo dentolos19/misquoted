@@ -24,30 +24,26 @@ export default function Page() {
           "hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center"
         }
       >
-        <div className={"columns"}>
-          <div className={"column"}></div>
-          <div className={"column is-three-fifths"}>
-            {quote ? (
-              <div className={"card"}>
-                <div className={"card-content"}>
-                  <p className={"title has-text-centered is-clickable"}>
-                    {"“" + quote.content + "”"}
-                  </p>
-                  <p
-                    className={"subtitle has-text-centered is-clickable"}
-                    onClick={() => {
-                      router.push("/author/" + quote.authorSlug);
-                    }}
-                  >
-                    {"— " + quote.author}
-                  </p>
-                </div>
+        <div>
+          {quote ? (
+            <div className={"card"}>
+              <div className={"card-content"}>
+                <p className={"title has-text-centered is-clickable"}>
+                  {"“" + quote.content + "”"}
+                </p>
+                <p
+                  className={"subtitle has-text-centered is-clickable"}
+                  onClick={() => {
+                    router.push("/author/" + quote.authorSlug);
+                  }}
+                >
+                  {"— " + quote.author}
+                </p>
               </div>
-            ) : (
-              <progress className={"progress"}></progress>
-            )}
-          </div>
-          <div className={"column"}></div>
+            </div>
+          ) : (
+            <progress className={"progress"}></progress>
+          )}
         </div>
       </div>
     </main>
