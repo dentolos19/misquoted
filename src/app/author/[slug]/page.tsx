@@ -10,7 +10,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       <div className={"hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center"}>
         <div className={"card"}>
           <div className={"card-header"}>
-            <div className={"card-header-title"}>{author?.name}</div>
+            <div className={"card-header-title"}>{author.name}</div>
           </div>
           <div className={"card-content"}>
             <div className={"content"}>
@@ -23,14 +23,14 @@ export default function Page({ params }: { params: { slug: string } }) {
                     <span>{author.description}</span>
                   </span>
                 </div>
-                <a className={"tag is-link is-clickable ml-1"} href={author.link}>
+                <Link className={"tag is-link is-clickable ml-1"} href={author.link}>
                   <span className={"icon-text"}>
                     <span className={"icon"}>
                       <span className={"fa-solid fa-link"}></span>
                     </span>
                     <span>Wikipedia</span>
                   </span>
-                </a>
+                </Link>
               </div>
               <h5>Biography</h5>
               <p>{author.bio}</p>
