@@ -52,7 +52,7 @@ export function getRandomQuote() {
     .then((data) => data as Quote);
 }
 
-export function getQuotesByAuthor(author: Author) {
+export function getAuthorQuotes(author: Author) {
   return fetch(`https://api.quotable.io/quotes?author=${author.slug}`)
     .then((res) => {
       if (!res.ok) {
