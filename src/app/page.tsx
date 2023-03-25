@@ -1,23 +1,19 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { use } from "react";
 import { getRandomQuote } from "@/lib/api";
 
 export default function Page() {
-  const router = useRouter();
-
-  const startHandler = async () => {
-    const quote = await getRandomQuote();
-    router.push("/quote/" + quote._id);
-  };
+  const initialQuoteId = use(getRandomQuote())._id;
 
   return (
     <main className={"hero is-fullheight"}>
       <div className={"hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center"}>
         <div className={"title"}>Misquoted</div>
-        <div className={"button"} onClick={startHandler}>
+        <Link className={"button"} href={"/quote/" + initialQuoteId}>
           Start
-        </div>
+        </Link>
       </div>
     </main>
   );
