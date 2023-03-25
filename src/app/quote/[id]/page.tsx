@@ -1,12 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { use } from "react";
 import { getQuote, getRandomQuote } from "@/lib/api";
 
 export default function Page({ params }: { params: { id: string } }) {
+  const router = useRouter();
+
   const quote = use(getQuote(params.id));
-  const nextQuoteId = use(getRandomQuote())._id;
+
+  const nextHandler = () => {
+    getRandomQuote().then((quote) => {
+      router.push("/quote/" + quote._id);
+    });
+  };
 
   return (
     <main className={"hero is-fullheight"}>
@@ -21,9 +29,9 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <Link className={"button mt-6"} href={"/quote/" + nextQuoteId}>
+        <div className={"button mt-6"} onClick={nextHandler}>
           Next
-        </Link>
+        </div>
       </div>
     </main>
   );
