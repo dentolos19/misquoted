@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { use } from "react";
+import { use, useEffect } from "react";
 import { getQuote, getRandomQuote } from "@/lib/api";
 
 export default function Page({ params }: { params: { id: string } }) {
@@ -10,10 +10,21 @@ export default function Page({ params }: { params: { id: string } }) {
 
   const quote = use(getQuote(params.id));
 
-  const nextHandler = () => {
+  useEffect(() => {
     getRandomQuote().then((quote) => {
-      router.push("/quote/" + quote._id);
+      localStorage.setItem("nextQuoteId", quote._id);
     });
+  }, []);
+
+  const nextHandler = () => {
+    const nextQuoteId = localStorage.getItem("nextQuoteId");
+    if (nextQuoteId) {
+      router.push("/quote/" + nextQuoteId);
+    } else {
+      getRandomQuote().then((quote) => {
+        router.push("/quote/" + quote._id);
+      });
+    }
   };
 
   return (
