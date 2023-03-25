@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { use, useEffect } from "react";
 import { getQuote, getRandomQuote } from "@/lib/api";
+import copy from "copy-to-clipboard";
 
 export default function Page({ params }: { params: { id: string } }) {
   const router = useRouter();
@@ -27,6 +28,10 @@ export default function Page({ params }: { params: { id: string } }) {
     }
   };
 
+  const copyHandler = () => {
+    copy("“" + quote.content + "” — " + quote.author);
+  };
+
   return (
     <main className={"hero is-fullheight"}>
       <div className={"hero-body is-flex is-flex-direction-column is-align-items-center is-justify-content-center"}>
@@ -40,8 +45,23 @@ export default function Page({ params }: { params: { id: string } }) {
             </div>
           </div>
         </div>
-        <div className={"button mt-6"} onClick={nextHandler}>
-          Next
+        <div className={"mt-6"}>
+          <div className={"button"} onClick={nextHandler}>
+            Next
+          </div>
+          <div className={"button ml-2"} onClick={copyHandler}>
+            Copy
+          </div>
+        </div>
+        <div className={"mt-4"}>
+          <Link className={"tag is-dark"} href={"https://github.com/dentolos19/Misquoted"}>
+            <span className={"icon-text"}>
+              <span className={"icon"}>
+                <span className={"fa-brands fa-github"}></span>
+              </span>
+              <span>View source code on GitHub</span>
+            </span>
+          </Link>
         </div>
       </div>
     </main>
