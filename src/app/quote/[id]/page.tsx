@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import copy from "copy-to-clipboard";
 import { useRouter } from "next/navigation";
 import { use, useEffect } from "react";
 import { getQuote, getRandomQuote } from "@/lib/api";
-import copy from "copy-to-clipboard";
 
 export default function Page({ params }: { params: { id: string } }) {
   const router = useRouter();
