@@ -1,9 +1,11 @@
 import Link from "next/link";
+import NotFound from "@/app/not-found";
 import { use } from "react";
 import { getAuthor, getAuthorQuotes } from "@/lib/api";
 
 export default function Page({ params }: { params: { slug: string } }) {
   const author = use(getAuthor(params.slug));
+  if (!author) return <NotFound />;
   const quotes = use(getAuthorQuotes(author));
   return (
     <main className={"hero is-fullheight"}>

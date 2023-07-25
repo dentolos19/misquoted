@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import NotFound from "@/app/not-found";
 import copy from "copy-to-clipboard";
 import { useRouter } from "next/navigation";
 import { use, useEffect } from "react";
@@ -16,6 +17,8 @@ export default function Page({ params }: { params: { id: string } }) {
       localStorage.setItem("nextQuoteId", quote._id);
     });
   }, []);
+
+  if (!quote) return <NotFound />;
 
   const nextHandler = () => {
     const nextQuoteId = localStorage.getItem("nextQuoteId");

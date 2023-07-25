@@ -23,7 +23,7 @@ export function getAuthor(slug: string) {
   return fetch(`https://api.quotable.io/authors?slug=${slug}`)
     .then((res) => {
       if (!res.ok) {
-        throw new Error(res.statusText);
+        return null;
       }
       return res.json();
     })
@@ -34,7 +34,7 @@ export function getQuote(id: string) {
   return fetch(`https://api.quotable.io/quotes/${id}`)
     .then((res) => {
       if (!res.ok) {
-        throw new Error(res.statusText);
+        return null;
       }
       return res.json();
     })
@@ -45,7 +45,7 @@ export function getRandomQuote() {
   return fetch("https://api.quotable.io/random")
     .then((res) => {
       if (!res.ok) {
-        throw new Error(res.statusText);
+        return null;
       }
       return res.json();
     })
@@ -56,7 +56,7 @@ export function getAuthorQuotes(author: Author) {
   return fetch(`https://api.quotable.io/quotes?author=${author.slug}`)
     .then((res) => {
       if (!res.ok) {
-        throw new Error(res.statusText);
+        return null;
       }
       return res.json();
     })
