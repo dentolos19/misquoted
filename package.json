@@ -9,15 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.4.4",
-    "@types/react": "18.2.16",
+    "@types/node": "20.5.1",
+    "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "bulma": "0.9.4",
     "copy-to-clipboard": "3.3.3",
-    "next": "13.4.12",
+    "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "1.64.1",
+    "sass": "1.66.1",
     "typescript": "5.1.6"
   }
 }
