@@ -1,4 +1,4 @@
-import "@/styles/core.scss";
+import "@/styles/globals.scss";
 
 export const metadata = {
   title: "Misquoted",

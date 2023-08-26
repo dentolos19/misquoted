@@ -7,7 +7,7 @@ export default function NotFound() {
 
   const backHandler = () => {
     router.back();
-  }
+  };
 
   return (
     <main className={"hero is-fullheight"}>
