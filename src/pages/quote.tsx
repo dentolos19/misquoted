@@ -56,23 +56,23 @@ export default function QuotePage() {
 
   return (
     <CenteredContainer>
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center" }}>
-        <div className={"card"}>
-          <div className={"card-content"}>
-            <div className={"title has-text-centered"}>{"“" + quote.content + "”"}</div>
-            <a href={`/author/${quote.authorSlug}`}>
-              <div className={"subtitle has-text-centered"}>{quote.author}</div>
-            </a>
+      <div className={"card"}>
+        <div className={"card-content"}>
+          <div className={"title has-text-centered"}>
+            {"“" + quote.content + "”"}
           </div>
+          <a href={`/author/${quote.authorSlug}`}>
+            <div className={"subtitle has-text-centered"}>{quote.author}</div>
+          </a>
         </div>
-        <div className={"mt-4"}>
-          <button className={"button"} onClick={handleNext}>
-            Next
-          </button>
-          <button className={"button ml-2"} onClick={handleCopy}>
-            Copy
-          </button>
-        </div>
+      </div>
+      <div className={"mt-4"}>
+        <button className={"button"} onClick={handleNext}>
+          Next
+        </button>
+        <button className={"button ml-2"} onClick={handleCopy}>
+          Copy
+        </button>
       </div>
     </CenteredContainer>
   );

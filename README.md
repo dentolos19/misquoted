@@ -3,4 +3,4 @@
     <span>Misquoted</span>
 </h1>
 
-A simple quote generator made with Next.js!
+A simple quote generator!
