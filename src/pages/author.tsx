@@ -1,4 +1,4 @@
-import CenteredContainer from "@/components/CenteredContainer";
+import CenteredContainer from "@/components/centered-container";
 import { Author, Quote, getAuthor, getAuthorQuotes } from "@/lib/api";
 import LoadingBoundary from "@/pages/loading";
 import { useEffect, useState } from "react";

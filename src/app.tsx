@@ -9,10 +9,10 @@ import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path={"/"} errorElement={<ErrorBoundary />}>
-      <Route element={<AuthorPage />} path="/author/:id" />
+      <Route element={<AuthorPage />} path={"/author/:id"} />
       <Route element={<QuotePage />} index />
-      <Route element={<QuotePage />} path="/quote" />
-      <Route element={<QuotePage />} path="/quote/:id" />
+      <Route element={<QuotePage />} path={"/quote"} />
+      <Route element={<QuotePage />} path={"/quote/:id"} />
     </Route>
   )
 );

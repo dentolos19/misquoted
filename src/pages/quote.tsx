@@ -1,4 +1,4 @@
-import CenteredContainer from "@/components/CenteredContainer";
+import CenteredContainer from "@/components/centered-container";
 import { Quote, getQuote, getRandomQuote } from "@/lib/api";
 import ErrorBoundary from "@/pages/error";
 import LoadingBoundary from "@/pages/loading";

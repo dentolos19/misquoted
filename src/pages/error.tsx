@@ -1,4 +1,4 @@
-import CenteredContainer from "@/components/CenteredContainer";
+import CenteredContainer from "@/components/centered-container";
 
 export default function ErrorBoundary() {
   return (
