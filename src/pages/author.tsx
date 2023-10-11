@@ -1,11 +1,13 @@
 import CenteredContainer from "@/components/centered-container";
 import { Author, Quote, getAuthor, getAuthorQuotes } from "@/lib/api";
+import ErrorBoundary from "@/pages/error";
 import LoadingBoundary from "@/pages/loading";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 export default function AuthorPage() {
   const params = useParams();
+  const [loading, setLoading] = useState<boolean>(true);
   const [author, setAuthor] = useState<Author>();
   const [quotes, setQuotes] = useState<Quote[]>([]);
 
@@ -14,10 +16,12 @@ export default function AuthorPage() {
     getAuthor(params.id).then((author) => {
       setAuthor(author);
       getAuthorQuotes(author).then((quotes) => setQuotes(quotes));
+      setLoading(false);
     });
   }, []);
 
-  if (!author || !(quotes.length > 0)) return <LoadingBoundary />;
+  if (loading) return <LoadingBoundary />;
+  if (!author || !(quotes.length > 0)) return <ErrorBoundary />;
 
   return (
     <CenteredContainer>

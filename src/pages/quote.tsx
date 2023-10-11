@@ -4,7 +4,7 @@ import ErrorBoundary from "@/pages/error";
 import LoadingBoundary from "@/pages/loading";
 import copy from "copy-to-clipboard";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 export default function QuotePage() {
   const params = useParams();
@@ -44,7 +44,7 @@ export default function QuotePage() {
   }, []);
 
   if (loading) return <LoadingBoundary />;
-  if (quote === undefined) return <ErrorBoundary />;
+  if (!quote) return <ErrorBoundary />;
 
   const handleNext = () => {
     generateQuote();
@@ -59,9 +59,9 @@ export default function QuotePage() {
       <div className={"card"}>
         <div className={"card-content"}>
           <div className={"title has-text-centered"}>{"“" + quote.content + "”"}</div>
-          <a href={`/author/${quote.authorSlug}`}>
+          <Link to={`/author/${quote.authorSlug}`}>
             <div className={"subtitle has-text-centered"}>{quote.author}</div>
-          </a>
+          </Link>
         </div>
       </div>
       <div className={"mt-4"}>
