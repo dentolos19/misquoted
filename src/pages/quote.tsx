@@ -58,9 +58,7 @@ export default function QuotePage() {
     <CenteredContainer>
       <div className={"card"}>
         <div className={"card-content"}>
-          <div className={"title has-text-centered"}>
-            {"“" + quote.content + "”"}
-          </div>
+          <div className={"title has-text-centered"}>{"“" + quote.content + "”"}</div>
           <a href={`/author/${quote.authorSlug}`}>
             <div className={"subtitle has-text-centered"}>{quote.author}</div>
           </a>
