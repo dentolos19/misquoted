@@ -7,6 +7,8 @@ Just another run-of-the-mill quote generator.
 
 ## 🧑‍💻 Contributing
 
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
 ### Prerequisites
 
 - [Node.js](https://nodejs.org) 18+
@@ -21,3 +23,7 @@ Just another run-of-the-mill quote generator.
 ## 💖 Credits
 
 - **Icon** by [Xinh Studio](https://flaticon.com/free-icon/left_11041809)
+
+## 📜 License
+
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
