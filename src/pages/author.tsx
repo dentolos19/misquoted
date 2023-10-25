@@ -3,7 +3,7 @@ import { Author, Quote, getAuthor, getAuthorQuotes } from "@/lib/api";
 import ErrorBoundary from "@/pages/error";
 import LoadingBoundary from "@/pages/loading";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 export default function AuthorPage() {
   const params = useParams();
@@ -15,8 +15,10 @@ export default function AuthorPage() {
     if (!params.id) return;
     getAuthor(params.id).then((author) => {
       setAuthor(author);
-      getAuthorQuotes(author).then((quotes) => setQuotes(quotes));
-      setLoading(false);
+      getAuthorQuotes(author).then((quotes) => {
+        setQuotes(quotes);
+        setLoading(false);
+      });
     });
   }, []);
 
@@ -55,7 +57,7 @@ export default function AuthorPage() {
             <ul>
               {quotes.map((quote) => (
                 <li key={quote._id}>
-                  <a href={"/quote/" + quote._id}>{quote.content}</a>
+                  <Link to={"/quote/" + quote._id}>{quote.content}</Link>
                 </li>
               ))}
             </ul>
