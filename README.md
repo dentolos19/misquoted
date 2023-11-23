@@ -3,7 +3,7 @@
     <span>Misquoted</span>
 </h1>
 
-Just another run-of-the-mill quote generator.
+Just another run-of-the-mill quote generator!
 
 ## 🧑‍💻 Contributing
 
