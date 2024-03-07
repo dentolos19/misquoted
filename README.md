@@ -1,5 +1,5 @@
 <h1>
-    <img src="icon.png" style="height: 1em;"/>
+    <img src="public/favicon.png" alt="Icon" height="30"/>
     <span>Misquoted</span>
 </h1>
 
@@ -12,13 +12,13 @@ Contributions are what make the open source community such an amazing place to l
 ### Prerequisites
 
 - [Node.js](https://nodejs.org) 18+
-- [pnpm](https://pnpm.io) 7+
+- [pnpm](https://pnpm.io) 8+
 
 ### Installation
 
 1. Clone the repo: `git clone https://github.com/dentolos19/misquoted.git`
 2. Install dependencies: `pnpm install`
-3. Start the app: `pnpm run dev`
+3. Run the app: `pnpm run dev`
 
 ## 💖 Credits
 

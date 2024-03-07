@@ -1,18 +1,22 @@
-# environment
+# IDE configurations
 .vs/
 .idea/
-.vscode/
-!.vscode/extensions.json
-!.vscode/launch.json
+
+# Environment files
 node_modules/
 
-# output
+# Output files
 dist/
 
-# user
-*.local
+# Output files: Next.js
+.vercel/
+.next/
+next-env.d.ts
 
-# miscellaneous
+# User-specific files
+.env*.local
+
+# Miscellaneous files
 .DS_Store
 Desktop.ini
 Thumbs.db
